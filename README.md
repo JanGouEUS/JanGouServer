@@ -1,3 +1,7 @@
+<p align="center"><img src="https://webgunea.jangou.eus/wp-content/uploads/2020/05/ezgif.com-video-to-gif.gif" width="400"></p>
+<p align="center">
+**[JanGou](https://jangou.eus)**
+</p>
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
 <p align="center">
@@ -27,53 +31,84 @@ Laravel has the most extensive and thorough [documentation](https://laravel.com/
 
 If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
 - **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
-- [云软科技](http://www.yunruan.ltd/)
 
-## Contributing
+ 
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Instalation and init server
+El despliegue no se hace en la carpeta publica del servidor sino en las carpetas del spacio privado del mismo.
+Don't do it git clone at public server folder. 
+```
+git clone https://github.com/JanGouEUS/JanGouServer.git
+cd JangouServer
+composer install
+```
+## .env config
+```
+cp .env.example .env
+php artisan key:generate
+```
 
-## Code of Conduct
+# .env
+```
+APP_NAME=Laravel
+APP_ENV=local <-- on production is production
+APP_KEY=your_aplication_key
+APP_DEBUG=true
+APP_URL=http://localhost <-- your domain
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=your_database
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
 
-## Security Vulnerabilities
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS=null
+MAIL_FROM_NAME="${APP_NAME}"
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+RECAPTCHA_SITE_KEY=your_site_key
+RECAPTCHA_SECRET_KEY=your_secret_key
+```
+## Database MIGRATE
+```
+php artisan migrate
+```
 
-## License
+### ADD mapbox key
+resources\js\components\Taberna\CreateTaberna.vue
+```
+line 705                 accessToken: 'mapbox_access_token', <-- add mapbox token
+```
+resources\js\components\Taberna\UpdateTaberna.vue
+```
+line 720                 accessToken: 'mapbox_access_token', <-- add mapbox token
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+### ADD telegram key
+config\telegram.php
+```
+line 37              'token'               => env('TELEGRAM_BOT_TOKEN', 'Bot_api_key'), <-- add telegram bot token
+```
+
+### COPY proyect public folder on server public folder
+```
+cp public ../your_public_server_folder
+```
+
+### Change on server public folder index.php
+```
+line 24      require __DIR__.'/../vendor/autoload.php'; <-- change to your new path 
+line 38      $app = require_once __DIR__.'/../bootstrap/app.php';  <-- change to your new path  
+
+
+```
