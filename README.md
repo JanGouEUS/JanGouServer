@@ -32,11 +32,6 @@ Laravel has the most extensive and thorough [documentation](https://laravel.com/
 If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
 
-
-- **[Vehikl](https://vehikl.com/)**
-
- 
-
 ## Instalation and server initialization
 The deployment should not be done in the public folder of the server, should be done in the private space of it. So, DON'T DO GIT CLONE IN THE PUBLIC FOLDER.
 ```
