@@ -30,11 +30,15 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
 If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+
+
+
+- **[Vehikl](https://vehikl.com/)**
+
  
 
-## Instalation and init server
-El despliegue no se hace en la carpeta publica del servidor sino en las carpetas del spacio privado del mismo.
-Don't do it git clone at public server folder. 
+## Instalation and server initialization
+The deployment should not be done in the public folder of the server, should be done in the private space of it. So, DON'T DO GIT CLONE IN THE PUBLIC FOLDER.
 ```
 git clone https://github.com/JanGouEUS/JanGouServer.git
 cd JangouServer
@@ -73,7 +77,7 @@ MAIL_FROM_NAME="${APP_NAME}"
 RECAPTCHA_SITE_KEY=your_site_key
 RECAPTCHA_SECRET_KEY=your_secret_key
 ```
-## Database MIGRATE
+##  MIGRATE database
 ```
 php artisan migrate
 ```
@@ -95,12 +99,12 @@ config\telegram.php
 line 37              'token'               => env('TELEGRAM_BOT_TOKEN', 'Bot_api_key'), <-- add telegram bot token
 ```
 
-### COPY proyect public folder on server public folder
+### COPY project public folder to public folder in server
 ```
 cp public ../your_public_server_folder
 ```
 
-### Change on server public folder index.php
+### Change public index.php
 ```
 line 24      require __DIR__.'/../vendor/autoload.php'; <-- change to your new path 
 line 38      $app = require_once __DIR__.'/../bootstrap/app.php';  <-- change to your new path  
