@@ -78,6 +78,9 @@ php artisan migrate
 ```
 
 ### ADD mapbox key
+In order to use mapbox in the app you need an Mapbox access token. Check here how to do it: [mapbox access token doc](https://docs.mapbox.com/help/how-mapbox-works/access-tokens/)
+
+Then, copy you token in the following files: 
 resources\js\components\Taberna\CreateTaberna.vue
 ```
 line 705                 accessToken: 'mapbox_access_token', <-- add mapbox token
